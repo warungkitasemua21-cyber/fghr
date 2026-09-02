@@ -1,12 +1,1 @@
-{
-  "name":"jagara-sales-crm-v6",
-  "version":"6.0.0",
-  "scripts":{"dev":"vite","build":"vite build"},
-  "dependencies":{
-    "react":"latest",
-    "react-dom":"latest",
-    "firebase":"latest",
-    "recharts":"latest",
-    "vite":"latest"
-  }
-}
+{"scripts":{"dev":"vite","build":"vite build"},"dependencies":{"react":"latest","react-dom":"latest","recharts":"latest","vite":"latest"}}
