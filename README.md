@@ -1,12 +1,12 @@
+Jagara Eco Park Dashboard V11 Activity Input Upgrade
 
-Jagara Dashboard V10.1 Fix
+Upgrade:
+- Sales Offline Activity Input lengkap
+- Digital Marketing Activity Input
+- KPI tracking sesuai Excel structure
+- Export report ready
 
-Improvements:
-- Sidebar buttons now functional
-- Sales Activity Input working
-- Data stored in session state
-- Export Excel button added
-- Excel report generation
-
-Next:
-Firebase realtime database integration.
+Sales KPI:
+Sales Activity 40%
+Sales Result 35%
+Digital Marketing 25%
