@@ -1,121 +1,77 @@
-import React,{useState} from 'react';
-import {createRoot} from 'react-dom/client';
-import './style.css';
+import React,{useState} from "react";
+import {createRoot} from "react-dom/client";
+import "./style.css";
 
 function App(){
 
-const [page,setPage]=useState("CEO Dashboard");
+const [role,setRole]=useState("CEO");
+const [sales,setSales]=useState([]);
+const [digital,setDigital]=useState([]);
 
-return <div className="layout">
+return <div className="app">
 
 <aside>
 <h1>JAGARA</h1>
-<p>Enterprise CRM</p>
-
-{[
-"CEO Dashboard",
-"Sales Manager",
-"Sales Input",
-"Digital Marketing",
-"KPI Scorecard",
-"Reports"
-].map(x=>
-<button onClick={()=>setPage(x)}>{x}</button>
-)}
+<p>Live CRM System</p>
+<select onChange={e=>setRole(e.target.value)}>
+<option>CEO</option>
+<option>Sales Manager</option>
+<option>Sales PIC</option>
+<option>Digital Marketing</option>
+</select>
 </aside>
 
 <main>
-<h1>{page}</h1>
+
+<h1>Jagara Eco Park Dashboard</h1>
+<p>Login Role: {role}</p>
 
 <div className="cards">
-<Card t="Revenue" v="Rp 1,45 M"/>
-<Card t="Lead" v="412"/>
-<Card t="Booking" v="98"/>
-<Card t="KPI Score" v="91%"/>
+<Card title="Sales Activity" value={sales.length}/>
+<Card title="Digital Activity" value={digital.length}/>
+<Card title="Revenue" value="Rp 0"/>
+<Card title="KPI Score" value="Waiting Data"/>
 </div>
 
-{page==="Sales Input" &&
-<Panel title="Sales Activity Input">
-<label>Sales PIC</label><input placeholder="Nama Sales"/>
-<label>Customer</label><input placeholder="Customer"/>
-<label>Segment</label>
-<select><option>Corporate</option><option>School</option><option>Family</option></select>
-<label>Activity</label>
-<select>
-<option>Call</option>
-<option>Follow Up</option>
-<option>Meeting</option>
-<option>Site Visit</option>
-<option>Proposal</option>
-<option>Negotiation</option>
-<option>Closing</option>
-</select>
-<input placeholder="Potential Revenue"/>
-<input placeholder="Next Follow Up"/>
-<button>Simpan Data</button>
-</Panel>
-}
+<section className="panel">
+<h2>CEO Overview</h2>
+<p>Dashboard akan otomatis berubah setelah input aktivitas dilakukan.</p>
+</section>
 
-{page==="Digital Marketing" &&
-<Panel title="Digital Marketing Activity Input">
-<input placeholder="PIC Marketing"/>
-<input placeholder="Campaign Name"/>
-<select>
-<option>Instagram</option>
-<option>TikTok</option>
-<option>Facebook</option>
-<option>Google</option>
-<option>WhatsApp</option>
-</select>
-<input placeholder="Content Published"/>
-<input placeholder="Reach"/>
-<input placeholder="Engagement"/>
-<input placeholder="Lead Generated"/>
-<input placeholder="Booking Generated"/>
-<input placeholder="Revenue Contribution"/>
-<button>Simpan Campaign</button>
-</Panel>
-}
+<section className="panel">
+<h2>Sales Manager Control</h2>
+<p>Monitoring target, aktivitas, pipeline dan KPI sales.</p>
+</section>
 
-{page==="KPI Scorecard" &&
-<Panel title="KPI Engine">
+<section className="panel">
+<h2>Sales PIC Input Flow</h2>
+<input placeholder="Customer"/>
+<input placeholder="Activity"/>
+<button>Save Activity</button>
+</section>
+
+<section className="panel">
+<h2>Digital Marketing Input Flow</h2>
+<input placeholder="Campaign"/>
+<input placeholder="Lead"/>
+<button>Save Campaign</button>
+</section>
+
+<section className="panel">
+<h2>KPI Calculation</h2>
 <table>
-<tr><th>Parameter</th><th>Weight</th></tr>
 <tr><td>Sales Activity</td><td>40%</td></tr>
 <tr><td>Sales Result</td><td>35%</td></tr>
 <tr><td>Digital Marketing</td><td>25%</td></tr>
 </table>
-</Panel>
-}
-
-{page==="Reports" &&
-<Panel title="Report Center">
-<button>Export Sales Excel</button>
-<button>Export Digital Marketing Excel</button>
-<button>Export KPI Report PDF</button>
-</Panel>
-}
-
-{page==="CEO Dashboard" &&
-<Panel title="Executive Overview">
-<p>Revenue Trend</p>
-<p>Sales Funnel</p>
-<p>Top Performer</p>
-<p>Digital Marketing Contribution</p>
-<p>Monthly Performance</p>
-</Panel>
-}
+</section>
 
 </main>
 </div>
 }
 
-function Card({t,v}){
-return <div className="card"><small>{t}</small><h2>{v}</h2></div>
+function Card({title,value}){
+return <div className="card"><b>{title}</b><h2>{value}</h2></div>
 }
 
-function Panel({title,children}){
-return <div className="panel"><h2>{title}</h2>{children}</div>
-}
-
-createRoot(document.getElementById('root')).render(<App/>);
+createRoot(document.getElementById("root")).render(<App/>);

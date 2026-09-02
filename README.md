@@ -1,16 +1,18 @@
 
-Jagara Eco Park CRM V14 Enterprise
+Jagara Eco Park CRM V16 Live Production
 
-Upgrade:
+Features:
+- Multi role structure
 - CEO dashboard
-- Sales manager monitoring
-- Sales PIC input
-- Digital marketing input
-- KPI engine
-- Report center
+- Sales Manager monitoring
+- Sales PIC workflow
+- Digital Marketing workflow
+- KPI engine structure
+- Firebase ready schema
+- Netlify ready
 
-Roadmap:
-Firebase authentication
-Firestore realtime
-Mobile sales input
-PDF/Excel reporting
+Next development:
+- Firebase Authentication
+- Firestore realtime
+- Permanent data storage
+- Excel/PDF reports

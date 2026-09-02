@@ -1,12 +1,13 @@
 {
-"name":"jagara-eco-park-crm-v14",
-"version":"14.0.0",
+"name":"jagara-crm-v16",
+"version":"16.0.0",
 "scripts":{"dev":"vite","build":"vite build"},
 "dependencies":{
 "react":"latest",
 "react-dom":"latest",
 "recharts":"latest",
 "xlsx":"latest",
+"firebase":"latest",
 "vite":"latest"
 }
 }
