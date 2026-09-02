@@ -1,24 +1,18 @@
 
-Jagara Eco Park Sales CRM V8 Enterprise Dashboard
+Jagara Eco Park Dashboard V10 Full UI
 
-Upgrade from KPI Excel:
-- CEO dashboard
-- Sales Manager dashboard
-- Multi sales input
-- Digital marketing monitoring
-- KPI scoring
-- Strategic account monitoring
-
-Designed from KPI Scoring Dashboard structure:
-Management KPI Summary
-CEO Dashboard
-Input Database
-Conversion Funnel
-Revenue Dashboard
-Strategic Account 20
-Digital Marketing KPI
-Campaign Review
-KPI Scorecard
+Features:
+- CEO Executive Dashboard
+- KPI cards
+- Sales trend
+- Lead funnel
+- Top sales performer
+- Recent activity
+- Sales activity input
+- Digital marketing overview
+- KPI scorecard
+- Sales filter
 
 Ready for GitHub + Netlify.
-Next integration: Firebase/Supabase realtime.
+Next step:
+Firebase/Supabase realtime database.

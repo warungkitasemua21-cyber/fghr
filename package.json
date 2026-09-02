@@ -1,6 +1,11 @@
 {
-"name":"jagara-sales-crm-v8",
-"version":"8.0.0",
+"name":"jagara-eco-dashboard-v10",
+"version":"10.0.0",
 "scripts":{"dev":"vite","build":"vite build"},
-"dependencies":{"react":"latest","react-dom":"latest","recharts":"latest","vite":"latest"}
+"dependencies":{
+"react":"latest",
+"react-dom":"latest",
+"recharts":"latest",
+"vite":"latest"
+}
 }
