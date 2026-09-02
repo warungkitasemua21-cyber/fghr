@@ -1,32 +1,38 @@
-# Jagara Eco Park Sales CRM V5 Production
+# Jagara Eco Park Sales CRM V6
 
-## Purpose
-Internal CRM and Sales Performance System.
+Real Operational System Blueprint
 
-## Modules
+Features:
 
-1. Authentication
-2. CEO Dashboard
-3. Sales Manager Dashboard
-4. Sales PIC Mobile Input
-5. Digital Marketing Dashboard
-6. Customer CRM
-7. Follow Up Reminder
-8. KPI Score Engine
-9. Revenue Monitoring
-10. Performance Ranking
+1. Firebase Authentication
+2. Role Access:
+- CEO
+- Sales Manager
+- Sales PIC
+- Digital Marketing
 
-## Recommended Stack
+3. CRM Customer Database
 
-Frontend:
-React + Vite
+4. Sales Activity:
+- Follow Up
+- Site Visit
+- Proposal
+- Closing
 
-Backend:
-Firebase / Supabase
+5. Digital Marketing Tracking
+
+6. KPI Score Engine
+
+7. Revenue Dashboard
+
+8. Sales Ranking
+
+9. Follow Up Reminder
+
+Recommended Backend:
+Firebase Authentication
+Firestore Database
+Firebase Storage
 
 Deployment:
-GitHub + Netlify
-
-Build:
-npm install
-npm run build
+GitHub -> Netlify
