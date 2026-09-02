@@ -1,164 +1,186 @@
 import React,{useState} from "react";
 import {createRoot} from "react-dom/client";
-import {BarChart,Bar,LineChart,Line,PieChart,Pie,Cell,XAxis,YAxis,Tooltip,ResponsiveContainer} from "recharts";
+import * as XLSX from "xlsx";
 import "./style.css";
 
-const salesTrend=[
-{day:"1",revenue:20},{day:"5",revenue:35},{day:"10",revenue:45},
-{day:"15",revenue:60},{day:"20",revenue:55},{day:"25",revenue:80}
-];
-
-const funnel=[
-{name:"Lead",value:640},
-{name:"Qualified",value:315},
-{name:"Proposal",value:142},
-{name:"Negotiation",value:98},
-{name:"Won",value:94}
-];
-
-const performers=[
-{name:"Andi",score:92},
-{name:"Budi",score:87},
-{name:"Cindy",score:84},
-{name:"David",score:79}
+const initial=[
+{
+date:"2026-09-02",
+sales:"Andi",
+customer:"PT ABC",
+activity:"Site Visit",
+status:"Proposal",
+revenue:20000000
+}
 ];
 
 function App(){
-const [filter,setFilter]=useState("All Sales");
 
-return <div className="app">
+const [page,setPage]=useState("CEO Dashboard");
+const [rows,setRows]=useState(initial);
+
+const [form,setForm]=useState({
+date:"",
+sales:"",
+customer:"",
+activity:"",
+status:"",
+revenue:""
+});
+
+function save(){
+setRows([...rows,{...form,revenue:Number(form.revenue)}]);
+setForm({date:"",sales:"",customer:"",activity:"",status:"",revenue:""});
+alert("Data berhasil disimpan");
+}
+
+function exportExcel(){
+
+const ws=XLSX.utils.json_to_sheet(rows);
+const wb=XLSX.utils.book_new();
+
+XLSX.utils.book_append_sheet(
+wb,
+ws,
+"Sales Activity"
+);
+
+XLSX.writeFile(
+wb,
+"Jagara_Sales_Activity_Report.xlsx"
+);
+}
+
+return <div className="layout">
 
 <aside>
 <h1>JAGARA</h1>
 <p>Eco Park Sales Center</p>
-<select onChange={e=>setFilter(e.target.value)}>
+
+<select>
 <option>All Sales</option>
 <option>Andi</option>
 <option>Budi</option>
 <option>Cindy</option>
 </select>
 
-<button>CEO Dashboard</button>
-<button>Sales Activity Input</button>
-<button>Digital Marketing</button>
-<button>KPI Scorecard</button>
-<button>Reports</button>
+<button onClick={()=>setPage("CEO Dashboard")}>
+CEO Dashboard
+</button>
+
+<button onClick={()=>setPage("Sales Activity Input")}>
+Sales Activity Input
+</button>
+
+<button onClick={()=>setPage("Digital Marketing")}>
+Digital Marketing
+</button>
+
+<button onClick={()=>setPage("KPI Scorecard")}>
+KPI Scorecard
+</button>
+
+<button onClick={exportExcel} className="download">
+Download Excel
+</button>
+
 </aside>
+
 
 <main>
 
-<header>
-<h1>Sales Activity Report</h1>
-<p>Performance Overview | {filter}</p>
-</header>
+<h1>{page}</h1>
 
-<div className="cards">
-<Card title="Total Sales" value="Rp 1.45 M"/>
-<Card title="New Leads" value="412 Leads"/>
-<Card title="Deals Closed" value="98 Deals"/>
-<Card title="Avg Deal Value" value="Rp 14.8 Jt"/>
-</div>
-
-
-<div className="grid">
+{page==="Sales Activity Input" &&
 
 <div className="panel">
-<h2>Monthly Sales Trend</h2>
-<ResponsiveContainer height={260}>
-<LineChart data={salesTrend}>
-<XAxis dataKey="day"/>
-<YAxis/>
-<Tooltip/>
-<Line dataKey="revenue"/>
-</LineChart>
-</ResponsiveContainer>
-</div>
 
+<h2>Input Aktivitas Sales Harian</h2>
 
-<div className="panel">
-<h2>Lead Funnel</h2>
-<ResponsiveContainer height={260}>
-<BarChart data={funnel}>
-<XAxis dataKey="name"/>
-<YAxis/>
-<Tooltip/>
-<Bar dataKey="value"/>
-</BarChart>
-</ResponsiveContainer>
-</div>
-
-</div>
-
-
-<div className="grid">
-
-<div className="panel">
-<h2>Top Sales Performance</h2>
-<ResponsiveContainer height={250}>
-<BarChart data={performers}>
-<XAxis dataKey="name"/>
-<YAxis/>
-<Tooltip/>
-<Bar dataKey="score"/>
-</BarChart>
-</ResponsiveContainer>
-</div>
-
-
-<div className="panel">
-<h2>Recent Activities</h2>
-<table>
-<tr><th>Time</th><th>Sales</th><th>Activity</th><th>Customer</th></tr>
-<tr><td>14:32</td><td>Budi</td><td>Call Qualified</td><td>Mega Corp</td></tr>
-<tr><td>11:15</td><td>Andi</td><td>Meeting</td><td>PT ABC</td></tr>
-</table>
-</div>
-
-</div>
-
-
-<div className="panel">
-<h2>Sales Activity Input</h2>
 <div className="form">
-<input placeholder="Nama Sales"/>
-<input placeholder="Customer"/>
-<select><option>Corporate</option><option>School</option><option>Family</option></select>
-<select><option>Follow Up</option><option>Site Visit</option><option>Proposal</option><option>Closing</option></select>
-<input placeholder="Potential Revenue"/>
-<button>Simpan</button>
-</div>
+
+<input placeholder="Tanggal"
+value={form.date}
+onChange={e=>setForm({...form,date:e.target.value})}/>
+
+<input placeholder="Nama Sales"
+value={form.sales}
+onChange={e=>setForm({...form,sales:e.target.value})}/>
+
+<input placeholder="Customer"
+value={form.customer}
+onChange={e=>setForm({...form,customer:e.target.value})}/>
+
+<select
+value={form.activity}
+onChange={e=>setForm({...form,activity:e.target.value})}>
+<option>Follow Up</option>
+<option>Meeting</option>
+<option>Site Visit</option>
+<option>Proposal</option>
+<option>Closing</option>
+</select>
+
+<select
+value={form.status}
+onChange={e=>setForm({...form,status:e.target.value})}>
+<option>Lead</option>
+<option>Qualified</option>
+<option>Proposal</option>
+<option>Won</option>
+<option>Lost</option>
+</select>
+
+<input placeholder="Potential Revenue"
+value={form.revenue}
+onChange={e=>setForm({...form,revenue:e.target.value})}/>
+
+<button onClick={save}>
+Simpan Aktivitas
+</button>
+
 </div>
 
 
-<div className="panel">
-<h2>Digital Marketing Performance</h2>
-<div className="cards">
-<Card title="Content" value="30"/>
-<Card title="Reach" value="125K"/>
-<Card title="WhatsApp Lead" value="250"/>
-<Card title="Conversion" value="18%"/>
-</div>
-</div>
+<h2>History Input</h2>
 
-
-<div className="panel">
-<h2>KPI Scorecard</h2>
 <table>
-<tr><th>Category</th><th>Weight</th><th>Score</th></tr>
-<tr><td>Sales Activity</td><td>40%</td><td>95%</td></tr>
-<tr><td>Sales Result</td><td>35%</td><td>90%</td></tr>
-<tr><td>Digital Marketing</td><td>25%</td><td>88%</td></tr>
+<tr>
+<th>Tanggal</th>
+<th>Sales</th>
+<th>Customer</th>
+<th>Activity</th>
+<th>Status</th>
+<th>Revenue</th>
+</tr>
+
+{rows.map(r=>
+<tr>
+<td>{r.date}</td>
+<td>{r.sales}</td>
+<td>{r.customer}</td>
+<td>{r.activity}</td>
+<td>{r.status}</td>
+<td>{r.revenue}</td>
+</tr>
+)}
+
 </table>
-<h1>Final Company Score: 91%</h1>
-</div>
 
-
-</main>
 </div>
 }
 
-function Card({title,value}){
-return <div className="card"><small>{title}</small><h2>{value}</h2></div>
+
+{page!=="Sales Activity Input" &&
+<div className="panel">
+<h2>{page}</h2>
+<p>Dashboard live performance Jagara Eco Park</p>
+</div>
+}
+
+</main>
+
+</div>
 }
 
 createRoot(document.getElementById("root")).render(<App/>);
