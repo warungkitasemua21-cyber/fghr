@@ -1,0 +1,36 @@
+body{
+font-family:Arial;
+background:#f2f5f8;
+margin:0
+}
+.container{
+padding:30px
+}
+.cards{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:20px
+}
+.card,.panel{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:15px;
+box-shadow:0 4px 12px #ddd
+}
+.grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:20px
+}
+select{
+padding:10px;
+font-size:16px
+}
+table{
+width:100%
+}
+td{
+padding:10px;
+border-bottom:1px solid #ddd
+}
