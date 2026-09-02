@@ -1,14 +1,16 @@
 
-Jagara Eco Park CRM V13
+Jagara Eco Park CRM V14 Enterprise
 
-Features:
+Upgrade:
 - CEO dashboard
-- Sales input
+- Sales manager monitoring
+- Sales PIC input
 - Digital marketing input
-- KPI scorecard
-- Excel export
-- Multi sales activity structure
+- KPI engine
+- Report center
 
-Ready for Netlify.
-Next integration:
-Firebase realtime + authentication.
+Roadmap:
+Firebase authentication
+Firestore realtime
+Mobile sales input
+PDF/Excel reporting

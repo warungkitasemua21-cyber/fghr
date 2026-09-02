@@ -1,10 +1,10 @@
 body{margin:0;font-family:Arial;background:#f4f6f8}
 .layout{display:flex;min-height:100vh}
-aside{width:240px;background:#123524;color:white;padding:25px}
-aside button{display:block;width:100%;padding:12px;margin:10px 0;border:0;border-radius:8px}
+aside{width:240px;background:#103b2a;color:white;padding:25px}
+aside button{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:0}
 main{flex:1;padding:30px}
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .card,.panel{background:white;padding:20px;border-radius:15px;margin:20px 0;box-shadow:0 4px 12px #ddd}
-input,select{padding:12px;margin:6px}
-table{width:100%;border-collapse:collapse;margin-top:20px}
+input,select{display:block;padding:12px;margin:10px;width:300px}
+table{width:100%;border-collapse:collapse}
 td,th{padding:10px;border-bottom:1px solid #ddd}
